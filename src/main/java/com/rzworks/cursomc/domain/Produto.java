@@ -1,5 +1,7 @@
 package com.rzworks.cursomc.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -15,7 +17,8 @@ public class Produto implements Serializable {
     private String name;
     private Double preco;
 
-    @ManyToMany
+    @JsonBackReference //referencia para o JsonManagebleReference
+    @ManyToMany //ManytoMny e JoinTable são para criar a referencia de muitos para muitos no banco de dados (criando automaticamente a tabela "PRODUTO_CATEGORIA" que faz a junção das outros tabelas
     @JoinTable(name = "PRODUTO_CATEGORIA",
             joinColumns = @JoinColumn(name = "produto_id"),
             inverseJoinColumns = @JoinColumn(name = "categoria_id")

@@ -1,4 +1,4 @@
-package com.rzworks.cursomc.resource;
+package com.rzworks.cursomc.resources;
 
 import com.rzworks.cursomc.domain.Categoria;
 import com.rzworks.cursomc.services.CategoriaService;
@@ -20,7 +20,7 @@ public class CategoriaResource {
 
     @RequestMapping(value="/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> find(@PathVariable Integer id){
-        Optional<Categoria> obj = service.buscar(id);
+        Optional<Categoria> obj = Optional.ofNullable(service.buscar(id));
         return ResponseEntity.ok().body(obj);
 
         /*
